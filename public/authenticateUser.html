@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Signup | Login</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+	<script src="/js/jquery.js"></script>
+	<script src="/js/bootstrap.js"></script>
+	<script src="https://use.fontawesome.com/795dd48394.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Lato:300, 400" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500" rel="stylesheet"> 
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		#page-wrapper{
+			font-family: 'Raleway', sans-serif;
+			color: #fff;
+			font-weight: 400;
+			height: 100vh;
+			width: 100%;
+		}
+		#partone, #parttwo, #partthree{
+			z-index: -1;
+			position: absolute;
+			top: 0;
+			width: 100%;
+			height: 100vh;
+			-webkit-clip-path: polygon(0 0, 43% 0, 68% 100%, 0 100%);
+			clip-path: polygon(0 0, 43% 0, 68% 100%, 0 100%);
+			background-color: #6078ea;
+		}
+		#parttwo{
+			-webkit-clip-path: polygon(100% 0, 43% 0, 68% 100%, 100% 100%);
+			clip-path: polygon(100% 0, 43% 0, 68% 100%, 100% 100%);
+			background-color: #1bcedf;
+		}
+		#partthree{
+			-webkit-clip-path: polygon(35% 0, 43% 0, 68% 100%, 68% 100%);
+			clip-path: polygon(35% 0, 43% 0, 68% 100%, 68% 100%);
+			background:linear-gradient(135deg, #1bcedf 0%,#6078ea 100%);
+		}
+		#support-ui-wrapper{
+			/*animation-name: flipback;
+			animation-duration: 2s;*/
+			transform-origin: left;
+			/*transition-duration: 3s;*/
+			position: absolute;
+			top: 50%;
+			right: 10%;
+			transform: translateY(-37.5vh); /*rotateY(-180deg);*/
+			z-index: 100;
+			width:25vw;
+			height: 75vh;
+			background-color: rgba(20, 60, 92, 0.7);
+			box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.6);
+		}
+		#signup-wrapper{
+
+			padding-top: 16px;
+			padding-left: 32px;
+			position: absolute;
+			top: 50%;
+			left: 10%;
+			width: calc(80% - 25vw);
+			height: 65vh;
+			background-color: rgba(147, 190, 234, 0.5);
+			z-index: 90;
+			transform: translateY(-32.5vh);
+			/*opacity: 0.6;*/
+			box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.6);
+		}
+		#support-ui-wrapper img{
+			display: inline-block;
+			position: absolute;
+			bottom: 16px;
+			right: 16px;
+			width: 45%;
+
+		}
+		#logo-name{
+			/*font-weight: 700;*/
+			display: inline-block;
+			font-size: 28px;
+			padding: 32px 32px;
+		}
+		h1{
+			font-family: 'Raleway', sans-serif;
+			font-weight: 400;
+			margin-bottom: 5px;
+		}
+		h2{
+			font-family: 'Raleway', sans-serif;
+			margin-top: 5px;
+			font-weight: 400;
+			margin-bottom: 7.5vh;
+		}
+		input{
+			color: #fafbfb;
+			font-family: 'Lato', sans-serif;
+			font-size: 18px;
+			width: 75%;
+			margin-bottom: 3vh;
+			display: block;
+			background-color: transparent;
+			border:none;
+			padding-bottom: 8px;
+			border-bottom: 1px solid #fff;
+		}
+		#signin-btn{
+			padding-top: 8px;
+			float: right;
+			margin-right: 25%;
+			width: 30%;
+			border:1px solid rgba(20, 60, 92, 0.9);
+			background: rgba(20, 60, 92, 0.5);
+			z-index: 2000;
+			box-shadow: -3px 3px 5px rgba(20, 60, 92, 0.9);
+		}
+		body{
+			position: relative;
+		}
+		canvas{
+	      display:block;
+	      vertical-align:bottom;
+	    }
+		#particles-js{
+			position: absolute;
+			top: 0;
+	      width: 100%;
+	      height: 100%;
+	      /*background:black;*/
+	      background-image: url('');
+	      background-size: cover;
+	      background-position: 50% 50%;
+	      background-repeat: no-repeat;
+	    }
+	</style>
+</head>
+<body>
+	<div id="particles-js"></div>
+
+	<div id="page-wrapper">
+		<div id="partone">
+		</div>
+		<div id="parttwo">
+		</div>
+		<div id="partthree">
+		</div>
+		<div id="support-ui-wrapper">
+			<span id="logo-name">
+				Signup
+			</span>
+			<img src="/img/book.png">
+		</div>
+		<div id="signup-wrapper">
+			<header>
+				<h1>
+					Hello there, 
+				</h1>
+				<h2>
+					Welcome to BlogChain
+				</h2>
+			</header>
+			<form>
+				<!-- <input type="text" name="user_name" placeholder="User Name"> -->
+				<input type="email" name="user_email" placeholder="email id">
+				<input type="password" name="user_password" placeholder="password">
+				<input id="signin-btn" type="button" value="SignIn">
+			</form>
+		</div>
+	</div>
+
+    <script src="/js/particles.js"></script>
+
+    <script type="text/javascript">
+      particlesJS.load('particles-js', '/assets/particlesjs-config.json', function() {
+        console.log('callback - particles.js config loaded');
+      });
+    </script>
+    </body>
+</html>

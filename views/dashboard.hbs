@@ -1,0 +1,92 @@
+<div id="dashboard-horizontal-nav">
+	<ul id="dashboard-horizontal-ul">
+		<li class="dashboard-horizontal-li">
+ 			<img src="/img/book.png" width="50px" height="50px">
+ 		</li>
+		<li class="dashboard-horizontal-li" style="padding-right: 72px;font-size: 32px;">
+			Blogchain
+		</li>
+		<li class="dashboard-horizontal-li">
+			Trending
+		</li>
+		<li class="dashboard-horizontal-li">
+			Hot
+		</li>
+		<li class="dashboard-horizontal-li">
+			Promoted
+		</li>
+	</ul>
+</div>
+
+
+<div id="dashboard-main">
+	<div class="container-fluid">
+		<div class="row">
+			<div id="home-body" class="col-md-12">
+				<div class="card-wrapper">
+					<div class="card-pic-holder">
+						<div class="label-danger">FRANCE</div>
+					</div>
+					<!-- <div class="profile-pic">
+					</div> -->
+					<div class="card-title">
+						South of France : Nicce
+					</div>
+					<div class="divider">
+					</div>
+					<div class="card-intro">
+						<img src="/img/student-1.png">
+						<span style="padding: 0 8px;">
+							Jan 26
+						</span>
+						<i style="float: right;margin-right: 8%;margin-top: 4px;" class="fa fa-bookmark-o fa-lg" aria-hidden="true"></i>
+					</div>
+					
+
+				</div>
+				<div class="card-wrapper card-wrapper-big">
+					<div class="card-pic-holder">
+					</div>
+					<div class="profile-pic">
+					</div>
+				</div>
+				<div class="card-wrapper card-wrapper-big">
+					<div class="card-pic-holder">
+					</div>
+					<div class="profile-pic">
+					</div>
+				</div>
+				<div class="card-wrapper ">
+					<div class="card-pic-holder">
+					</div>
+					<div class="profile-pic">
+					</div>
+				</div>
+				<div class="card-wrapper">
+					<div class="card-pic-holder">
+					</div>
+					<div class="profile-pic">
+					</div>
+				</div>
+				<div class="card-wrapper card-wrapper-big">
+					<div class="card-pic-holder">
+					</div>
+					<div class="profile-pic">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="dashboard-sidebar">
+</div>
+
+<script type="text/javascript">
+	$('.dashboard-li-img').on('mouseenter', function(){
+		console.log("fry");
+		$('.dashboard-li-img').css('display', 'none');
+		$('.dashboard-li-img-overlay').css('display', 'inline-block');
+		$('.dashboard-li-img-overlay').addClass('animated slideInLeft');
+	});
+</script>

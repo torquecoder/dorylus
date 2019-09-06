@@ -1,0 +1,184 @@
+<script src="js/medium-editor.min.js"></script>
+<script src="js/ipfs-mini.js"></script>
+<!-- Navigation -->
+<img id="qr-code " src="">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">DORYLUS</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="blog_home">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../portfolio.html">Team</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="blog_create">Create</a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+<div id="user-profile-wrapper">
+	<div id="user-profile-info-card">
+	    <div id="left-info">
+	      <h1>Start Writing</h1>
+	      <p>Spread the knowledge</p>
+	    </div>
+	    <img id="qr-code" src="/img/holmes.png">
+	  </div>
+    <button type="button" class="btn btn-primary" id="create-blog-btn">Create Blog</button>
+    <hr>
+	  <div class="profile-divider">
+	</div>
+</div>
+<div class="editable">
+
+</div>
+
+<!-- <img id="qr-code" src=""> -->
+<script>var editor = new MediumEditor('.editable');</script>
+<script src="js/web3.min.js"></script>
+<script type="text/javascript">
+  $('#create-blog-btn').on('click', function(){
+    // var IPFS = require('ipfs-mini');
+    var ipfs = new IPFS({host: 'ipfs.infura.io', port: 5001, protocol: 'https'});
+    var blogData = $('.editable').text();
+    // console.log(blogData);
+    ipfs.add(blogData, function(err, hash){
+      // document.getElementById('qr-code').src = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + hash;
+
+     if (err) {
+       return console.log(err);
+     }
+     console.log('HASH:', hash);
+     // Initialize Web3
+      if (typeof web3 !== 'undefined') {
+        web3 = new Web3(web3.currentProvider);
+      } else {
+        web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:7545'));
+      }
+
+      // Set Account
+      web3.eth.defaultAccount = web3.eth.accounts[0];
+      // console.log(web3.toAscii('0x73776170'));
+
+var contractAbi = [
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "content_ref",
+        "type": "string"
+      }
+    ],
+    "name": "bind",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "payable": true,
+    "stateMutability": "payable",
+    "type": "constructor"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "content_ref",
+        "type": "string"
+      }
+    ],
+    "name": "checkOwnership",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "getArrayLength",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "idx",
+        "type": "uint256"
+      }
+    ],
+    "name": "getContentRef",
+    "outputs": [
+      {
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "content_ref",
+        "type": "string"
+      }
+    ],
+    "name": "getCreatorAddress",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  }
+];
+      // Set Contract Address
+      var contractAddress = '0x90af16eea7b478408c8797749e7877eec9352075';
+     
+      // Set the Contract
+      var contract = web3.eth.contract(contractAbi).at(contractAddress);
+
+      // bind ipfs reference to creator's public address
+      contract.bind(hash,function(err) {
+        console.log('binding done');
+        //create qr code
+        
+      });
+
+
+    });
+  });
+</script>	
